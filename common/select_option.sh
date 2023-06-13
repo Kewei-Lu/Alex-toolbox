@@ -1,41 +1,95 @@
 #!/bin/bash
 
-select_option() {
-  choices=("$@") # 将选项数组声明为全局变量
-  selected=0     # 初始化选择索引
+function select_single_option {
+  local choices=("$@")
+  local selected=0
 
   while true; do
     clear
     for index in "${!choices[@]}"; do
       if [ $index -eq $selected ]; then
-        printf "\033[31m> ${choices[$index]}\033[0m\n" # 高亮显示选中的选项
+        printf "\033[31m> ${choices[$index]}\033[0m\n"
       else
         echo "  ${choices[$index]}"
       fi
     done
 
-    read -n1 -s key # 读取单个按键并保持输入的隐私
+    read -N1 -r -s key
 
     case "$key" in
-    A) # 上箭头
+    A) # up
       if [ $selected -gt 0 ]; then
         selected=$((selected - 1))
       fi
       ;;
-    B) # 下箭头
+    B) # down
       if [ $selected -lt $((${#choices[@]} - 1)) ]; then
         selected=$((selected + 1))
       fi
       ;;
-    "") # 回车键
+    $'\n') # enter  $'\x0a'
       break
       ;;
     esac
   done
-  # 打印最终结果日志
   selected_option="${choices[$selected]}"
-  echo "最终选择：$selected_option"
+  echo "You choose $selected_option"
 }
 
-# 定义选项数组
+function select_multiple_option {
+  local choices=("$@")
+  local current_index=0
+  local selected=() # selected index
+  choices=("${choices[@]}" "next")
+  echo "${selected[*]}"
+
+  while true; do
+    clear
+    for index in "${!choices[@]}"; do
+      if [[ ${selected[*]} =~ ${choices[index]} ]]; then
+        if [[ $index -eq $current_index ]]; then
+          printf "\033[32m > ${choices[$index]}\033[0m\n"
+        else
+          printf "\033[32m ${choices[$index]}\033[0m\n"
+        fi
+      else
+        if [[ $index -eq $current_index ]]; then
+          printf "\033[31m > ${choices[$index]}\033[0m\n"
+        else
+          echo " ${choices[index]}"
+        fi
+      fi
+    done
+
+    read -N1 -s key
+    case "$key" in
+    A)
+      if [ $current_index -gt 0 ]; then
+        current_index=$((current_index - 1))
+      fi
+      ;;
+    B)
+      if [ $current_index -lt $((${#choices[@]} - 1)) ]; then
+        current_index=$((current_index + 1))
+      fi
+      ;;
+    $'\n') # enter  $'\x0a'
+      # select done, exit
+      if [[ $current_index -eq $((${#choices[@]} - 1)) ]]; then
+        break
+      else
+        # remove item
+        if [[ ${selected[*]} =~ ${choices[$current_index]} ]]; then
+          selected=("${selected[@]/${choices[current_index]}/}")
+        else
+          selected=("${selected[@]}" "${choices[current_index]}")
+        fi
+      fi
+      ;;
+    esac
+  done
+  echo "You choose：${selected[*]}"
+}
+
 options=("Option 1" "Option 2" "Option 3" "Option 4")
+
