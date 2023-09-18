@@ -13,6 +13,9 @@
 mdadm -C /dev/md/imsm0 /dev/nvme[1-3]n1 -n 3 -e imsm  # create a container
 mdadm -C /dev/md0 /dev/md/imsm0 -n3 -l5 --consistency-policy=ppl -z 100G  # create a raid5 array at /dev/md0 with 3 disks /dev/md/imsm0  and 100G
 mdadm -C /dev/md1 /dev/md/imsm0 -n3 -l5 --consistency-policy=ppl -z 100G  # create another raid5 array at /dev/md1 with 3 disks in /dev/md/imsm0 and 100G
+
+mdadm -vS /dev/md0
+mdadm -vS /dev/md/imsm0  # 
 ```
 
 ### mdadm
