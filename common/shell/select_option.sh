@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# A sample script for select function of shell scripts
+
 function select_single_option {
   local choices=("$@")
   local selected=0
+  echo "${choices[@]}"
 
   while true; do
     clear
@@ -92,4 +95,4 @@ function select_multiple_option {
 }
 
 options=("Option 1" "Option 2" "Option 3" "Option 4")
-
+select_single_option "${options[@]}"
