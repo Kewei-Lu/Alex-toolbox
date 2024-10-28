@@ -1,0 +1,128 @@
+{
+  // general
+  "workbench.colorTheme": "Dracula At Night",
+  "explorer.confirmDelete": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  // 保存时格式化
+  "editor.formatOnSave": true,
+  // 设置 eslint 保存时自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  //一些高亮配置项
+  //颜色配置
+  "editor.tokenColorCustomizations": {
+    "comments": "#858c99", // 注释
+    "keywords": "#c678dd", // 关键字
+    "variables": "#9fb2bf", // 变量名
+    "strings": "#98c379", // 字符串
+    "functions": "#e06c75", // 函数名
+    "numbers": "#d19a66" // 数字
+  },
+  // 选中高亮的颜色
+  "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#4e8bda7e", //选中高亮
+    // "editor.background": "#282c35", //背景色
+    "editorCursor.foreground": "#bebebe", //编辑器光标颜色
+    "editor.lineHighlightBackground": "#126161", //光标所在行高亮内容的背景颜色
+    "editor.lineHighlightBorder": "#00000000", //光标所在行四周边框的背景颜色
+    "sideBar.background": "#21252b",
+    "sideBar.foreground": "#b3bccc",
+    "tab.inactiveBackground": "#21252b"
+  },
+  // tab 大小为2个空格
+  "editor.tabSize": 2,
+  // 字體大小
+  "editor.fontSize": 14,
+  // 設置行高
+  "editor.lineHeight": 25,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // background
+  "background.enabled": true, // 插件是否启动
+  "background.useDefault": false, // 是否使用默认图片
+  "background.customImages": [
+    // 在这里添加自己喜欢图片的路径，最多可添加3张图片
+  ],
+  "background.style": {
+    "content": "''",
+    "pointer-events": "none",
+    "position": "absolute",
+    "z-index": "99999",
+    "width": "100%",
+    "height": "100%",
+    "background-position": "center",
+    "background-repeat": "no-repeat",
+    "background-size": "100%,100%",
+    "opacity": 0.1 // 背景图片的透明度设置
+  },
+  "files.autoSave": "onFocusChange",
+  // 背景设置配置 end
+  // RemoteSSH
+  "remote.SSH.remotePlatform": {},
+  // Golang
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "editor.defaultFormatter": "golang.go",
+      "editor.insertSpaces": "explicit"
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "explorer.confirmDragAndDrop": false,
+  "git.mergeEditor": true,
+  "shellformat.effectLanguages": [
+    "shellscript",
+    "dockerfile",
+    "dotenv",
+    "hosts",
+    "jvmoptions",
+    "ignore",
+    "gitignore",
+    "spring-boot-properties"
+  ],
+  "shellformat.path": "",
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "notebook.lineNumbers": "on",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "emmet.includeLanguages": {
+    "jinja2": "html",
+    "jinja-html": "html",
+    "django-html": "html"
+  },
+  "yaml.completion": false,
+  "yaml.format.enable": false,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.languageServer": "Pylance",
+  "bitoAI.codeCompletion.setAutoCompletionTriggerLogic": 250,
+  "editor.accessibilitySupport": "off",
+  "leetcode.defaultLanguage": "python3",
+  "leetcode.endpoint": "leetcode-cn",
+  "remote.SSH.localServerDownload": "off",
+  "remote.SSH.useExecServer": false,
+}
